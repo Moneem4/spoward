@@ -1,0 +1,26 @@
+enum MessageItemType {
+	IMAGE
+	AUDIO
+	POST
+	LINK
+	VIDEO
+}
+
+input CreateMessageItemInput {
+	itemType: MessageItemType!
+	itemPath: String
+}
+
+type MessageItem {
+	_id: ID!
+	itemType: MessageItemType!
+	itemPath: String
+}
+
+type Query {
+	messageItem(messageItemId: ID!): MessageItem
+}
+
+type Mutation {
+	createMessageItem(input: CreateMessageItemInput!): MessageItem
+}

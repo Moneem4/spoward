@@ -1,0 +1,22 @@
+input CreateRoleInput {
+	code: String!
+	description: String
+	permissions: [ID!]!
+}
+
+type Role {
+	_id: ID!
+	code: String
+	description: String
+	permissions: [ID!]!
+	createdAt: Float!
+	updatedAt: Float!
+}
+
+type Query {
+	roles: [Role]
+}
+
+type Mutation {
+	createRole(input: CreateRoleInput!): Role
+}

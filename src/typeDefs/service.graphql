@@ -1,0 +1,48 @@
+#TODO: add services types !
+enum ServiceType {
+	ARTIST
+	TECHNIAN
+}
+#TODO: add filter
+enum Access {
+	PRIVATE
+	PUBLIC
+}
+
+input CreateServiceInput {
+	userId: ID!
+	title: String!
+	description: String
+	serviceType: ServiceType!
+	serviceAccess: Access!
+}
+
+input UpdateServiceInput {
+	title: String
+	description: String
+	serviceType: ServiceType!
+	serviceAccess: Access!
+}
+
+type Service {
+	_id: ID!
+	userId: ID!
+	title: String!
+	description: String!
+	serviceType: ServiceType!
+	serviceAccess: Access!
+	createdAt: Float!
+	updatedAt: Float!
+}
+
+type Query {
+	services: [Service]
+	servicesByUserId(userId: ID!): [Service]
+	service(_id: ID!): Service
+}
+
+type Mutation {
+	createService(input: CreateServiceInput!): Service
+
+	updateService(_id: ID!, input: UpdateServiceInput): Service
+}

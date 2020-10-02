@@ -1,0 +1,22 @@
+input CreateContractCloseInput {
+	contractId: ID!
+	title: String!
+	content: String!
+}
+
+type ContractClose {
+	_id: ID!
+	contractId: ID!
+	title: String!
+	content: String!
+	createdAt: Float!
+	updatedAt: Float!
+}
+
+type Query {
+	contractClose(contractId: ID!): [ContractClose]
+}
+
+type Mutation {
+	CreateContractClose(input: CreateContractCloseInput!): ContractClose
+}

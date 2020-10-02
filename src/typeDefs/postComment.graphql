@@ -1,0 +1,30 @@
+input CreatePostCommentInput {
+	userId: ID!
+	postId: ID!
+	content: String!
+}
+
+input UpdatePostCommentInput {
+	content: String!
+}
+
+type PostComment {
+	_id: ID!
+	userId: ID!
+	postId: ID!
+	content: String!
+	createdAt: Float!
+	updatedAt: Float!
+}
+
+type Query {
+	postComments(postId: ID!): [PostComment]
+}
+
+type Mutation {
+	createPostComment(input: CreatePostCommentInput!): PostComment
+	updatePostComment(_id: ID!, input: UpdatePostCommentInput): PostComment
+	deletePostComment(_id: ID!):Boolean
+	deletePostComments(postId:ID!):Boolean!
+	deleteUserPostComments(userId:ID!):Boolean!
+}

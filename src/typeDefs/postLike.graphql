@@ -1,0 +1,23 @@
+input CreatePostLikeInput {
+	userId: ID!
+	postId: ID!
+}
+
+type PostLike {
+	_id: ID!
+	userId: ID!
+	postId: ID!
+	createdAt: Float!
+	updatedAt: Float!
+}
+
+type Query {
+	postLikes(postId: ID!): [PostLike]
+}
+
+type Mutation {
+	createPostLike(input: CreatePostLikeInput!): PostLike
+	deletePostLike(_id: ID!):Boolean
+	deletePostLikes(postId:ID!):Boolean
+	deleteUserLikes(userId:ID!):Boolean
+}

@@ -1,0 +1,36 @@
+enum PostAccessType {
+	BLACK_LISTED
+	PRIVATE
+	PUBLIC
+}
+
+input CreatePostAccessInput {
+	userId: ID!
+	postId: ID!
+	type: PostAccessType!
+}
+
+input UpdatePostAccessInput {
+	type: PostAccessType!
+}
+
+type PostAccess {
+	_id: ID!
+	userId: ID!
+	postId: ID!
+	type: PostAccessType!
+	createdAt: Float!
+	updatedAt: Float!
+}
+
+type Query {
+	postAccess(postId: ID!): [PostAccess]
+}
+
+type Mutation {
+	createPostAccess(input: CreatePostAccessInput!): PostAccess
+	updatePostAccess(_id: ID!, input: UpdatePostAccessInput): PostAccess
+	deletePostAccess(_id: ID!):Boolean
+	deletePostAccesss(postId:ID!):Boolean!
+	deleteUserPostAccesss(userId:ID!):Boolean!
+}

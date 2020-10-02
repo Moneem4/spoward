@@ -1,0 +1,29 @@
+enum EventLogType {
+	UPDATE
+	STATES
+}
+
+input CreateEventLogInput {
+	userId: ID!
+	taskId: ID!
+	type: EventLogType!
+	discription: String!
+}
+
+type EventLog {
+	_id: ID!
+	userId: ID!
+	taskId: ID!
+	type: EventLogType!
+	discription: String!
+	createdAt: Float!
+	updatedAt: Float!
+}
+
+type Query {
+	eventLogs(taskId: ID!): [EventLog]
+}
+
+type Mutation {
+	CreateEventLog(input: CreateEventLogInput!): EventLog
+}

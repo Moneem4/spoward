@@ -1,0 +1,50 @@
+enum EventContributerType {
+	CO_ORGANIZER
+	CONTRIBUTER
+	BLACK_LIST
+}
+
+enum Status {
+	ACCEPTED
+	REFUSED
+	PENDING
+}
+
+input CreateEventContributerInput {
+	eventId: ID!
+	userId: ID!
+	type: EventContributerType!
+	percentage: Float!
+	status: Status!
+}
+
+input UpdateEventContributerInput {
+	eventId: ID!
+	userId: ID!
+	type: EventContributerType!
+	percentage: Float!
+	status: Status!
+}
+
+type EventContributer {
+	_id: ID!
+	eventId: ID!
+	userId: ID!
+	type: EventContributerType!
+	percentage: Float!
+	status: Status!
+	createdAt: Float!
+	updatedAt: Float!
+}
+
+type Query {
+	eventContributer(eventId: ID!): [EventContributer]
+}
+
+type Mutation {
+	createEventContributer(input: CreateEventContributerInput!): EventContributer
+	updateEventContributer(
+		_id: ID!
+		input: UpdateEventContributerInput
+	): EventContributer
+}

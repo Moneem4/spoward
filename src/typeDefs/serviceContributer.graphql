@@ -1,0 +1,43 @@
+enum Status{
+	ACCEPTED
+	REFUZED
+	PENDING
+}
+
+input CreateServiceContributerInput{
+	serviceId: ID!
+	userId: ID!
+	status: Status!
+	percentage: Float!
+}
+
+input UpdateServiceContributerInput{
+	status: Status!
+	percentage: Float!
+}
+
+type ServiceContributer{
+	_id: ID!
+	serviceId: ID!
+	userId: ID!
+	status: Status!
+	percentage: Float!
+	createdAt: Float!
+	updatedAt: Float!
+}
+
+type Query{
+	contributer(
+		serviceId: ID!
+	): [ServiceContributer]
+}
+
+type Mutation{
+	createServiceContributer(
+		input: CreateServiceContributerInput!
+	): ServiceContributer
+	updateServiceContributer(
+		_id: ID!
+		input: UpdateServiceContributerInput
+	): ServiceContributer
+}

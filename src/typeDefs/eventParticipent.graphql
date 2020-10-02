@@ -1,0 +1,43 @@
+enum EventParticipentType {
+	GUEST
+	PARTICIPENT
+}
+
+input CreateEventParticipentInput {
+	eventId: ID!
+	packId: ID!
+	userId: ID!
+	type: EventParticipentType!
+	quantity: Float!
+}
+
+input UpdateEventParticipentInput {
+	eventId: ID!
+	packId: ID!
+	userId: ID!
+	type: EventParticipentType!
+	quantity: Float!
+}
+
+type EventParticipent {
+	_id: ID!
+	eventId: ID!
+	packId: ID!
+	userId: ID!
+	type: EventParticipentType!
+	quantity: Float!
+	createdAt: Float!
+	updatedAt: Float!
+}
+
+type Query {
+	eventParticipent(eventId: ID!): [EventParticipent]
+}
+
+type Mutation {
+	createEventParticipent(input: CreateEventParticipentInput!): EventParticipent
+	updateEventParticipent(
+		_id: ID!
+		input: UpdateEventParticipentInput
+	): EventParticipent
+}

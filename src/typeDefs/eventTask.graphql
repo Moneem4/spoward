@@ -1,0 +1,60 @@
+enum Visibility {
+	PRIVATE
+	PUBLIC
+}
+
+enum State {
+	DONE
+	PENDING
+}
+
+input CreateEventTastInput {
+	userId: ID!
+	title: String!
+	visibility: Visibility!
+	taskOwnerId: ID!
+	startDate: Float!
+	endDate: Float!
+	state: State!
+	description: String!
+	content: String
+}
+
+input UpdateEventTastInput {
+	eventId: ID!
+	title: String!
+	visibility: Visibility!
+	taskOwnerId: ID!
+	startDate: Float!
+	endDate: Float!
+	state: State!
+	description: String!
+	content: String
+}
+
+type EventTast {
+	_id: ID!
+	userId: ID!
+	eventId: ID!
+	title: String!
+	visibility: Visibility!
+	taskOwnerId: ID!
+	startDate: Float!
+	endDate: Float!
+	state: State!
+	description: String!
+	content: String!
+	createdAt: Float!
+	updatedAt: Float!
+}
+
+type Query {
+	eventTasks: [EventTast]
+	eventTask(_id: ID!): EventTast
+}
+
+type Mutation {
+	createEventTast(input: CreateEventTastInput!): EventTast
+
+	updateEventTast(_id: ID!, input: UpdateEventTastInput): EventTast
+}

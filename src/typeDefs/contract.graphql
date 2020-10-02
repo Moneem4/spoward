@@ -1,0 +1,52 @@
+enum Status {
+	PENDING
+	REFUSED
+	ACCEPTED
+	DONE
+}
+
+enum ContractType {
+	ARTISTIC
+	TECHNICIAN
+}
+
+input CreateContractInput {
+	contracterId: ID!
+	contractTargetId: ID!
+	status: Status!
+	type: ContractType!
+	startDate: Float
+	endDate: Float
+}
+
+input UpdateContractInput {
+	contracterId: ID!
+	contractTargetId: ID!
+	status: Status!
+	type: ContractType!
+	startDate: Float
+	endDate: Float
+}
+
+type Contract {
+	_id: ID!
+	contracterId: ID!
+	contractTargetId: ID!
+	status: Status!
+	type: ContractType!
+	startDate: Float!
+	endDate: Float!
+	createdAt: Float!
+	updatedAt: Float!
+}
+
+type Query {
+	contracts: [Contract]
+	contract(_id: ID!): Contract
+}
+
+type Mutation {
+	createContract(input: CreateContractInput!): Contract
+
+	updateContract(_id: ID!, input: UpdateContractInput): Contract
+}

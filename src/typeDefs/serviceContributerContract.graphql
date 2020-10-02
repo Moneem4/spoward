@@ -1,0 +1,22 @@
+input CreateServiceContributerInput {
+	serviceContributerId: ID!
+	contractId: ID!
+}
+
+type ServiceContributerId {
+	_id: ID!
+	serviceContributerId: ID!
+	contractId: ID!
+	createdAt: Float!
+	updatedAt: Float!
+}
+
+type Query {
+	ServiceContributerIds(serviceContributerId: ID!): [ServiceContributerId]
+}
+
+type Mutation {
+	CreateServiceContributerId(
+		input: CreateServiceContributerInput!
+	): ServiceContributerId
+}

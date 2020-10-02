@@ -1,0 +1,28 @@
+input CreateServicePackInput {
+	serviceId: ID!
+	title: String!
+	price: Float!
+}
+
+input UpdateServicePackInput {
+	title: String!
+	price: Float!
+}
+
+type ServicePack {
+	_id: ID!
+	serviceId: ID!
+	title: String!
+	price: Float!
+	createdAt: Float!
+	updatedAt: Float!
+}
+
+type Query {
+	servicePacks(serviceId: ID!): [ServicePack]
+}
+
+type Mutation {
+	createServicePack(input: CreateServicePackInput!): ServicePack
+	updateServicePack(_id: ID!, input: UpdateServicePackInput!): ServicePack
+}

@@ -1,0 +1,63 @@
+enum State{
+	PUBLISHED
+    NOT_PUBLISHED
+}
+
+
+enum Access{
+	PRIVATE
+	PUBLIC
+}
+
+input CreateEventInput{
+	ownerId: ID!
+	date: Float!
+    venue: String!
+    capacity: Float!
+    description: String!
+    state: State!
+    access: Access!
+    title: String!
+}
+
+input UpdateEventInput{
+	date: Float!
+    venue: String!
+    capacity: Float!
+    description: String!
+    state: State!
+    access: Access!
+    title: String!
+}
+
+type Event{
+	_id: ID!
+	ownerId: ID!
+	date: Float!
+    venue: String!
+    capacity: Float!
+    description: String!
+    state: State!
+    access: Access!
+    title: String!
+	createdAt: Float!
+	updatedAt: Float!
+}
+
+type Query{
+	events: [Event]
+	event(
+		_id: ID!
+	): Event
+}
+
+type Mutation{
+	createEvent(
+		input: CreateEventInput!
+	): Event
+	
+    updateEvent(
+		_id: ID!
+		input: UpdateEventInput
+	): Event
+}

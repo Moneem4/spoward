@@ -1,0 +1,34 @@
+input CreateEventPackInput {
+	eventId: ID!
+	title: String!
+	price: Float!
+	startDate: Float!
+	endDate: Float!
+}
+
+input UpdateEventPackInput {
+	title: String!
+	price: Float!
+	startDate: Float!
+	endDate: Float!
+}
+
+type EventPack {
+	_id: ID!
+	eventId: ID!
+	title: String!
+	price: Float!
+	startDate: Float!
+	endDate: Float!
+	createdAt: Float!
+	updatedAt: Float!
+}
+
+type Query {
+	eventPacks(eventId: ID!): [EventPack]
+}
+
+type Mutation {
+	createEventPack(input: CreateEventPackInput!): EventPack
+	updateEventPack(_id: ID!, input: UpdateEventPackInput): EventPack
+}

@@ -1,0 +1,22 @@
+input CreateServicePackContractInput {
+	servicePackId: ID!
+	contractId: ID!
+}
+
+type ServicePackContract {
+	_id: ID!
+	servicePackId: ID!
+	contractId: ID!
+	createdAt: Float!
+	updatedAt: Float!
+}
+
+type Query {
+	ServicePackContracts(servicePackId: ID!): [ServicePackContract]
+}
+
+type Mutation {
+	CreateServicePackContract(
+		input: CreateServicePackContractInput!
+	): ServicePackContract
+}

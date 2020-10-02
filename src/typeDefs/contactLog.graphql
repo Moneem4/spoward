@@ -1,0 +1,29 @@
+enum ContractLogType {
+	UPDATE
+	STATES
+}
+
+input CreateContractLogInput {
+	userId: ID!
+	closeId: ID!
+	type: ContractLogType!
+	discription: String!
+}
+
+type ContractLog {
+	_id: ID!
+	userId: ID!
+	closeId: ID!
+	type: ContractLogType!
+	discription: String!
+	createdAt: Float!
+	updatedAt: Float!
+}
+
+type Query {
+	contractLog(type: ID!): [ContractLog]
+}
+
+type Mutation {
+	CreateContractLog(input: CreateContractLogInput!): ContractLog
+}
